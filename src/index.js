@@ -1,13 +1,14 @@
+import '../env';
 import Express from 'express'
 import Parser from 'body-parser'
 // import Compression from 'compression'
 // import Multer from 'multer'
 import ErrorHandler from 'errorhandler'
 import ResponseTime from 'response-time'
-import task from './routes/task';
-import dotenv from 'dotenv';
 
-dotenv.config();
+import db from './db';
+import task from './routes/task';
+
 console.log(process.env.DB_USER);
 
 const port = process.env.PORT || 3000
@@ -23,7 +24,7 @@ if (ENV === 'development') {
 
 app.get('/', (req, res) => res.send('Hello World'))
 
-app.use('/tasks', task);
+app.use('/api/tasks', task);
 
 app.listen(port, () => console.log(`Server started at: http://localhost:${port}`))
 
