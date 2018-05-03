@@ -4,7 +4,7 @@ import Parser from 'body-parser'
 // import Multer from 'multer'
 import ErrorHandler from 'errorhandler'
 import ResponseTime from 'response-time'
-
+import task from './routes/task';
 
 const port = process.env.PORT || 3000
 const ENV = process.env.NODE_ENV = process.env.NODE_ENV || 'development'
@@ -19,5 +19,8 @@ if (ENV === 'development') {
 
 app.get('/', (req, res) => res.send('Hello World'))
 
+app.use('/tasks', task);
+
 app.listen(port, () => console.log(`Server started at: http://localhost:${port}`))
 
+export default app;
