@@ -748,3 +748,5 @@ BenchmarkDotNet.Artifacts/
 # OpenCover UI analysis results
 OpenCover/
 ### TextMate template
+
+.env
