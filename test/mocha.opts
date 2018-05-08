@@ -2,6 +2,5 @@
 --require ./test/_setup.js
 --es_staging
 --recursive
---reporter min
+--reporter spec
 --ui bdd
---watch

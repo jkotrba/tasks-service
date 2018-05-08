@@ -75,7 +75,7 @@ router.put("/:id", async (req, res) => {
     console.log(err);
     return res
       .status(500)
-      .json({ error: { message: `An error occurred updating task ${id}` } });
+      .send({ error: { message: `An error occurred updating task ${id}` } });
   }
 });
 
@@ -92,7 +92,7 @@ router.delete('/:id', async (req, res) => {
     console.log(err);
     return res
       .status(500)
-      .json({ error: { message: `An error occurred deleting task ${id}` } });
+      .send({ error: { message: `An error occurred deleting task ${id}` } });
   }
 });
 
