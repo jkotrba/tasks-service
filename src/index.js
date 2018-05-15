@@ -5,11 +5,10 @@ import Parser from 'body-parser'
 // import Multer from 'multer'
 import ErrorHandler from 'errorhandler'
 import ResponseTime from 'response-time'
+import cors from 'cors';
 
 import db from './db';
 import task from './routes/task';
-
-console.log(process.env.DB_USER);
 
 const port = process.env.PORT || 3000
 const ENV = process.env.NODE_ENV = process.env.NODE_ENV || 'development'
@@ -17,6 +16,7 @@ const app = Express()
 
 app.use(Parser.json())
 app.use(ResponseTime())
+app.use(cors());
 
 if (ENV === 'development') {
   app.use(ErrorHandler())

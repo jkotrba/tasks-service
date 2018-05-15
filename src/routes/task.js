@@ -24,6 +24,7 @@ router.get('/:id', async(req, res) => {
 });
 
 router.get("/", async (req, res) => {
+
   try {
     const tasks = await task.find({});
     res.json({ data: tasks });
@@ -48,6 +49,7 @@ router.post("/", async (req, res) => {
     const created = await task.create(newTask);
     res.json({ data: created });
   } catch (err) {
+    console.log(err);
     return res
       .status(500)
       .json({ error: { message: "An error creating a task" } });
