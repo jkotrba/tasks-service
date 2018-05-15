@@ -13,8 +13,9 @@ router.get('/:id', async(req, res) => {
     const foundTask = await task.findOne({taskId: id});
     if(foundTask) {
       res.json({ data: foundTask });
+    } else {
+      res.status(404).json({message: 'NOT FOUND'});
     }
-    res.status(404).json({message: 'NOT FOUND'});
   } catch (err) {
     console.log(err);
     return res
@@ -52,7 +53,7 @@ router.post("/", async (req, res) => {
     console.log(err);
     return res
       .status(500)
-      .json({ error: { message: "An error creating a task" } });
+      .send({ error: { message: "An error creating a task" } });
   }
 });
 
@@ -70,8 +71,9 @@ router.put("/:id", async (req, res) => {
     const updated = await task.findOneAndUpdate(query, updateTask, { new: true });
     if(updated) {
       res.json( {data: updated });
+    } else {
+      res.status(404).send({message: 'NOT FOUND'});
     }
-    res.status(404).json({message: 'NOT FOUND'});
   }
   catch(err) {
     console.log(err);

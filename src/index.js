@@ -26,10 +26,10 @@ app.get('/', (req, res) => res.send('Hello World'))
 
 app.use('/api/tasks', task);
 
-app.use((err, req, res, next) => {
-  console.log(err.stack);
-  res.status(500).send('An error occurred on the server');
-});
+// app.use((err, req, res, next) => {
+//   console.log(err.stack);
+//   res.status(500).send('An error occurred on the server');
+// });
 
 app.listen(port, () => console.log(`Server started at: http://localhost:${port}`))
 
